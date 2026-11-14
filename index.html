@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080808">
+<title>Rayan's Project - Student Learning</title>
+<style>
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;font-family:Arial,sans-serif;color:#fff;background:linear-gradient(140deg,#050505,#102c65,#ff7900)}
+header{text-align:center;padding:28px 14px;background:linear-gradient(110deg,#d71920,#1539a5,#f28c00)}
+header h1{font-size:29px;margin:8px}
+nav{position:sticky;top:0;z-index:5;background:#080808;padding:12px;text-align:center}
+nav a{color:#ffdc45;text-decoration:none;font-weight:bold;margin:7px;display:inline-block}
+.wrap{max-width:950px;margin:auto;padding:14px}
+.card{background:#101010ee;border:2px solid #f5a623;border-radius:17px;padding:20px;margin:18px 0;box-shadow:0 5px 18px #0008}
+h2{color:#ffc247}
+button{background:linear-gradient(90deg,#d71920,#1746c5);color:white;border:0;border-radius:9px;padding:12px 16px;margin:5px;font-weight:bold;cursor:pointer}
+input,select,textarea{width:100%;padding:13px;margin:8px 0;border-radius:8px;border:2px solid #2386ff;font-size:16px}
+img,video{width:100%;border-radius:12px;margin-top:10px}
+video{background:#000;max-height:430px}
+.feature{background:#222;padding:14px;margin:11px 0;border-left:5px solid #ffdc45;border-radius:8px}
+#loginPage{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:18px;background:linear-gradient(140deg,#000,#ff7900,#071c50)}
+.login{width:100%;max-width:440px;background:#090909;border:3px solid #f5a623;border-radius:20px;padding:24px;text-align:center;box-shadow:0 0 25px #ff790066}
+.login h1{color:#ffc247}
+.login img{max-width:145px;max-height:145px;object-fit:cover;border-radius:18px}
+#appPage{display:none}
+#message{color:#00e68a}
+#studentGreeting{color:#ffe27a;font-weight:bold}
+.quiz-q{padding:13px;background:#222;border-radius:10px;margin:12px 0}
+footer{text-align:center;background:#050505;padding:24px;color:#ffdc45}
+.small{font-size:13px;color:#ccc}
+</style>
+</head>
+<body>
+<div id="loginPage">
+ <div class="login">
+  <img src="lion-logo.png" alt="Rayan's Project lion logo">
+  <h1>WELCOME TO RAYAN'S PROJECT</h1>
+  <p>STUDENT LEARNING PORTAL</p>
+  <form onsubmit="registerStudent(event)">
+   <input id="studentName" placeholder="Student full name" required>
+   <input id="studentId" placeholder="Student number (optional)">
+   <select id="studentClass" required>
+    <option value="">Select class</option>
+    <option>Senior 1</option><option>Senior 2</option>
+    <option>Senior 3</option><option>Senior 4</option>
+    <option>Senior 5</option><option>Senior 6</option>
+    <option>Other</option>
+   </select>
+   <input id="studentEmail" type="text" placeholder="Email or phone" required>
+   <input id="studentPassword" type="password" placeholder="Create password" required>
+   <button type="submit">REGISTER / SIGN IN</button>
+  </form>
+  <p id="message"></p>
+  <p class="small">Demo student profile only. This page does not securely create accounts or save passwords.</p>
+ </div>
+</div>
+
+<div id="appPage">
+<header>
+ <h1>RAYAN'S PROJECT</h1>
+ <p>STUDENT LEARNING PORTAL</p>
+ <p>Technology • Education • Innovation</p>
+ <p id="studentGreeting"></p>
+</header>
+<nav>
+ <a href="#dashboard">Dashboard</a><a href="#lessons">Lessons</a>
+ <a href="#videos">Videos</a><a href="#quiz">Quiz</a><a href="#mission">About</a>
+</nav>
+<div class="wrap">
+<section class="card" id="dashboard">
+ <h2>🎓 Student Dashboard</h2>
+ <p>Welcome to your learning space. Choose a lesson, watch a video and test what you have learned.</p>
+ <button onclick="speak('Welcome to Rayan Student Learning Portal. Choose a lesson, watch educational videos and try the quiz.')">🔊 Listen to Welcome</button>
+ <button onclick="stopVoice()">⏹ Stop voice</button>
+ <div class="feature"><strong>Learn:</strong> Read simple lesson notes.</div>
+ <div class="feature"><strong>Watch:</strong> Play educational videos.</div>
+ <div class="feature"><strong>Practise:</strong> Answer the quiz and see your score.</div>
+</section>
+
+<section class="card" id="lessons">
+ <h2>📚 Student Lessons</h2>
+ <div class="feature">
+  <h3>Lesson 1: Introduction to ICT</h3>
+  <p>ICT means Information and Communication Technology. It includes digital tools such as computers, phones and the internet that help people create, store and share information.</p>
+  <button onclick="speak('ICT means Information and Communication Technology. It includes digital tools such as computers, phones and the internet that help people create, store and share information.')">🔊 Listen to lesson</button>
+ </div>
+ <div class="feature">
+  <h3>Lesson 2: Computer Hardware and Software</h3>
+  <p>Hardware refers to the physical parts of a computer, such as the keyboard, screen and mouse. Software refers to the programs and instructions that run on a computer.</p>
+  <button onclick="speak('Hardware means the physical parts of a computer, such as the keyboard, screen and mouse. Software means the programs and instructions that run on a computer.')">🔊 Listen to lesson</button>
+ </div>
+ <div class="feature">
+  <h3>Lesson 3: Internet Safety</h3>
+  <p>Keep passwords private, use trusted websites, think before sharing personal information and tell a trusted adult or teacher if something online makes you uncomfortable.</p>
+  <button onclick="speak('Keep passwords private, use trusted websites, think before sharing personal information and tell a trusted adult or teacher if something online makes you uncomfortable.')">🔊 Listen to lesson</button>
+ </div>
+</section>
+
+<section class="card" id="videos">
+ <h2>🎬 Educational Video Centre</h2>
+ <p>Play the sample video or choose a learning video stored on your device.</p>
+ <video controls playsinline preload="metadata">
+  <source src="https://mdn.github.io/learning-area/html/multimedia-and-embedding/video-and-audio-content/rabbit320.mp4" type="video/mp4">
+  Your browser cannot play this video.
+ </video>
+ <p class="small">The sample is only a video-player demonstration and requires internet access.</p>
+ <h3>Choose a video from your phone</h3>
+ <input type="file" id="videoUpload" accept="video/*" multiple>
+ <div id="videoList"></div>
+</section>
+
+<section class="card" id="quiz">
+ <h2>📝 ICT Practice Quiz</h2>
+ <p>Choose one answer for each question, then check your score.</p>
+ <div class="quiz-q">
+  <p><strong>1. What does ICT stand for?</strong></p>
+  <label><input type="radio" name="q1" value="a"> Internet Computer Training</label><br>
+  <label><input type="radio" name="q1" value="b"> Information and Communication Technology</label><br>
+  <label><input type="radio" name="q1" value="c"> Internal Communication Tools</label>
+ </div>
+ <div class="quiz-q">
+  <p><strong>2. Which one is computer hardware?</strong></p>
+  <label><input type="radio" name="q2" value="a"> Keyboard</label><br>
+  <label><input type="radio" name="q2" value="b"> Web browser</label><br>
+  <label><input type="radio" name="q2" value="c"> Operating system</label>
+ </div>
+ <div class="quiz-q">
+  <p><strong>3. What should you do with your password?</strong></p>
+  <label><input type="radio" name="q3" value="a"> Share it publicly</label><br>
+  <label><input type="radio" name="q3" value="b"> Keep it private</label><br>
+  <label><input type="radio" name="q3" value="c"> Write it in a public post</label>
+ </div>
+ <button onclick="markQuiz()">Check my answers</button>
+ <h3 id="quizResult"></h3>
+</section>
+
+<section class="card" id="mission">
+ <h2>🎯 About Rayan's Project</h2>
+ <p>Our goal is to make learning easier by bringing together technology, useful information, videos and practice activities.</p>
+ <p><strong>Our vision:</strong> Help students build knowledge, confidence and useful digital skills.</p>
+ <button onclick="speak('Rayan Project helps students learn ICT, explore educational videos and practise what they have learned with quizzes.')">🔊 Listen</button>
+ <button onclick="logout()">Sign Out</button>
+</section>
+</div>
+<footer><h2>RAYAN'S PROJECT</h2><p>Learn • Explore • Grow</p><p>© 2026 Rayan's Project</p></footer>
+</div>
+
+<script>
+function speak(text){
+ if(!('speechSynthesis' in window)){alert('Voice narration is not supported on this device.');return;}
+ speechSynthesis.cancel();
+ const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=.9;speechSynthesis.speak(u);
+}
+function stopVoice(){if(window.speechSynthesis)speechSynthesis.cancel();}
+function registerStudent(e){
+ e.preventDefault();
+ const name=document.getElementById('studentName').value.trim();
+ const cls=document.getElementById('studentClass').value;
+ document.getElementById('loginPage').style.display='none';
+ document.getElementById('appPage').style.display='block';
+ document.getElementById('studentGreeting').textContent='Welcome, '+name+' • '+cls;
+ window.scrollTo(0,0);
+ speak('Welcome '+name+'. Your student learning portal is ready. Start with the lessons, watch videos and try the ICT quiz.');
+}
+function logout(){
+ stopVoice();
+ document.getElementById('appPage').style.display='none';
+ document.getElementById('loginPage').style.display='flex';
+ document.getElementById('studentPassword').value='';
+ window.scrollTo(0,0);
+}
+function markQuiz(){
+ const answers={q1:'b',q2:'a',q3:'b'};
+ let score=0;
+ for(const q in answers){
+  const selected=document.querySelector('input[name="'+q+'"]:checked');
+  if(selected && selected.value===answers[q])score++;
+ }
+ document.getElementById('quizResult').textContent='Your score: '+score+' out of 3';
+ speak('You scored '+score+' out of 3. '+(score===3?'Excellent work!':'Good effort. Review the lessons and try again.'));
+}
+const upload=document.getElementById('videoUpload');
+const videoList=document.getElementById('videoList');
+let videoURLs=[];
+upload.addEventListener('change',()=>{
+ videoURLs.forEach(u=>URL.revokeObjectURL(u));videoURLs=[];videoList.innerHTML='';
+ Array.from(upload.files).forEach((file,i)=>{
+  if(!file.type.startsWith('video/'))return;
+  const url=URL.createObjectURL(file);videoURLs.push(url);
+  const h=document.createElement('h3');h.textContent='Video '+(i+1)+': '+file.name;
+  const v=document.createElement('video');v.controls=true;v.playsInline=true;v.src=url;
+  videoList.appendChild(h);videoList.appendChild(v);
+ });
+});
+</script>
+</body>
+</html>
